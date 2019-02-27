@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
+import GlobalStyle from '../GlobalStyle';
+import Router from './Router';
 
 class App extends Component {
-  render() {
-    return (
-      <div>
-        정릉4동 성당
-      </div>
-    );
-  }
+	render() {
+		return (
+			<>
+				<GlobalStyle />
+				<Router/>
+			</>
+		);
+	}
 }
 
 export default App;
