@@ -5,13 +5,12 @@ import styled from 'styled-components';
 const Container = styled.div`
 	width: 100%;
 	height: 50px;
-	padding: 0 0.5em;
+	padding: 0 2.5%;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	background-image: linear-gradient(to right, #77d8a0, #62b5af);
 	color: #fff;
-	font-size: 1.2rem;
 `;
 
 const Title = styled.h1`
