@@ -5,7 +5,7 @@ import styled from 'styled-components';
 const Container = styled.div`
 	width: 100%;
 	height: 50px;
-	padding: 0 2.5%;
+	padding: 0 2%;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -32,7 +32,7 @@ const Header = withRouter(({ location: { pathname } }) => (
 		<Link to="/">
 			<Icon className="fas fa-arrow-left" pathname={pathname !== '/notice'} />
 		</Link>
-		<Title>전례부</Title>
+		<Title>{pathname === '/' ? '배당표' : '공지사항'}</Title>
 		<Link to="/notice">
 			<Icon className="fas fa-bell" />
 		</Link>

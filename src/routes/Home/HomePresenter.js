@@ -1,44 +1,37 @@
 import React from 'react';
 import styled from 'styled-components';
 import Search from '../../components/Search';
-import AddButton from '../../components/AddButton';
+import Button from '../../components/Button';
 import Schedule from '../../components/Schedule';
 
 const Container = styled.div`
-	padding: 1em 0;
-	width: 95%;
-	margin: 0 auto;
+	width: 100%;
+	height: calc(100vh - 50px);
+	overflow:auto;
+	padding: 0 2%;
 `;
 
 const TitleContainer = styled.div`
 	display: flex;
 	justify-content: space-around;
-	border-bottom: 1px solid #e0e0e0;
-	padding-bottom: 1em;
-	color: #9e9e9e;
+	color: #757575;
+	margin-bottom: 20px;
 `;
 
 const Title = styled.span`
+	font-size: 10px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	font-size: 0.7rem;
 `;
 
 const Icon = styled.i`
-	font-size: 1.1rem;
-	margin-bottom: 0.5em;
+	padding-bottom: 5px;
+	font-size: 1.3rem;
 `;
 
-const ScheduleContainer = styled.div`
-	background: #fff;
-	min-height: 50vh;
-	margin-top: 1em;
-	border-radius: 10px;
-`;
-
-const Home = ({ schedules, onCreate, onUpdate }) => (
-	<Container>
+const Home = ({ schedules, onCreate, home, onDelete, onClear, onUpdate }) => (
+	<Container ref={home}>
 		<Search />
 		<TitleContainer>
 			<Title>
@@ -66,12 +59,10 @@ const Home = ({ schedules, onCreate, onUpdate }) => (
 				<span>2독</span>
 			</Title>
 		</TitleContainer>
-		<ScheduleContainer>
-			{schedules.map(schedule => (
-				<Schedule schedule={schedule} key={schedule.id} onUpdate={onUpdate} />
-			))}
-		</ScheduleContainer>
-		<AddButton onCreate={onCreate} />
+		{schedules.map(schedule => (
+			<Schedule schedule={schedule} key={schedule.id} onUpdate={onUpdate} />
+		))}
+		<Button onCreate={onCreate} onDelete={onDelete} onClear={onClear} />
 	</Container>
 );
 

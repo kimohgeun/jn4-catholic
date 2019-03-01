@@ -7,27 +7,21 @@ const Container = styled.div`
 	align-items: center;
 `;
 
-const Title = styled.h2`
-	font-size: 0.8rem;
-	font-weight: bold;
-	margin: 2em 0;
-	color: #9e9e9e;
-`;
-
 const Textarea = styled.textarea`
 	display: block;
-	all: unset;
+	border: none;
+	resize: none;
+	outline: none;
 	background: #fff;
-	width: 90%;
-	min-height: 75vh;
-	border-radius: 5px;
-	padding: 2% 3%;
+	width: calc(100%);
+	height: calc(100vh - 50px);
+	padding: 0.5em 1em;
+	font-size:1rem;
 `;
 
 const Notice = ({ notice, handleChange }) => (
 	<Container>
-		<Title>공 지 사 항</Title>
-		<Textarea value={notice} onChange={handleChange} />
+		<Textarea value={notice} onChange={handleChange} placeholder="공지사항..."/>
 	</Container>
 );
 

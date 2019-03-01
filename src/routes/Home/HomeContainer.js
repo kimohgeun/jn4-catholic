@@ -7,7 +7,9 @@ class HomeContainer extends Component {
 		schedules: [],
 	};
 
-	onCreate = () => {
+	home = React.createRef();
+
+	onCreate = async () => {
 		const { schedules } = this.state;
 		const schedule = {
 			id: uuid(),
@@ -18,8 +20,26 @@ class HomeContainer extends Component {
 			oneLector: '',
 			twoLector: '',
 		};
-		this.setState({
+		await this.setState({
 			schedules: schedules.concat(schedule),
+		});
+		this.home.current.scrollTop = this.home.current.scrollHeight;
+	};
+
+	onDelete = async () => {
+		const { schedules } = this.state;
+		schedules.pop();
+		await this.setState({
+			schedules: schedules,
+		});
+		this.home.current.scrollTop = this.home.current.scrollHeight;
+	};
+
+	onClear = () => {
+		const { schedules } = this.state;
+		schedules.pop();
+		this.setState({
+			schedules: [],
 		});
 	};
 
@@ -39,7 +59,16 @@ class HomeContainer extends Component {
 
 	render() {
 		const { schedules } = this.state;
-		return <HomePresenter schedules={schedules} onCreate={this.onCreate} onUpdate={this.onUpdate} />;
+		return (
+			<HomePresenter
+				schedules={schedules}
+				onCreate={this.onCreate}
+				onDelete={this.onDelete}
+				onUpdate={this.onUpdate}
+				onClear={this.onClear}
+				home={this.home}
+			/>
+		);
 	}
 }
 

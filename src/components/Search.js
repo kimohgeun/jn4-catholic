@@ -5,11 +5,12 @@ const Form = styled.form`
 	display: flex;
 	align-items: center;
 	background: #fff;
-	margin-bottom: 2em;
+	margin-bottom: 1.5em;
 	padding: 0 0.5em;
 	border-radius: 10px;
 	color: #424242;
 	border: 1px solid #e0e0e0;
+	margin-top: 20px;
 `;
 
 const Input = styled.input`

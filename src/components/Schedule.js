@@ -3,12 +3,11 @@ import styled from 'styled-components';
 
 const Container = styled.div`
 	display: flex;
-	justify-content: space-around;
-	color: #424242;
+	justify-content:space-around;
 	border-radius: 5px;
 	color: #62b5af;
-    font-weight: bold;
-    padding: 1em 0;
+	font-weight: bold;
+	margin-bottom: 20px;
 `;
 
 const Input = styled.input`
@@ -17,13 +16,12 @@ const Input = styled.input`
 	font-size: 0.8rem;
 	text-align: center;
 	margin: 3px;
-	background: ${props => (props.value === '' ? '#EEEEEE' : 'none')};
-	padding: 1em 0;
-	border-radius: 3px;
+	border: 1px solid ${props => (props.value === '' ? '#BDBDBD' : 'none')};
+	padding: 1.5em 0;
+	border-radius: 5px;
 `;
 
 class Schedule extends Component {
-
 	state = {
 		day: this.props.schedule.day,
 		missaNarrator: this.props.schedule.missaNarrator,
@@ -45,7 +43,6 @@ class Schedule extends Component {
 
 	render() {
 		const { day, missaNarrator, oneAltarServer, twoAltarServer, oneLector, twoLector } = this.props.schedule;
-		console.log(day);
 		return (
 			<Container>
 				<Input name="day" value={day} onChange={this.handleChange} />
