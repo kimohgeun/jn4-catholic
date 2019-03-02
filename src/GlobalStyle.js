@@ -13,7 +13,7 @@ const GlobalStyle = createGlobalStyle`
     body{
        font-family: 'Nanum Gothic', sans-serif;
         font-size:1rem;
-        background:#F1F1F1;
+        background:#fff;
     }
 `;
 

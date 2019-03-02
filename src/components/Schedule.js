@@ -3,21 +3,22 @@ import styled from 'styled-components';
 
 const Container = styled.div`
 	display: flex;
-	justify-content:space-around;
+	justify-content: space-around;
 	border-radius: 5px;
-	color: #62b5af;
+	color: #757575;
 	font-weight: bold;
 	margin-bottom: 20px;
+	z-index: 5;
 `;
 
 const Input = styled.input`
 	all: unset;
 	width: 100%;
+	margin: 2px;
 	font-size: 0.8rem;
 	text-align: center;
-	margin: 3px;
-	border: 1px solid ${props => (props.value === '' ? '#BDBDBD' : 'none')};
-	padding: 1.5em 0;
+	border: 1px solid ${props => (props.value === '' ? '#e0e0e0' : 'none')};
+	padding: 1em 0;
 	border-radius: 5px;
 `;
 

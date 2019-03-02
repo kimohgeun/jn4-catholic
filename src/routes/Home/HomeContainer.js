@@ -1,50 +1,86 @@
 import React, { Component } from 'react';
 import HomePresenter from './HomePresenter';
-import uuid from 'uuid';
+import { firestore } from '../../firebase';
 
 class HomeContainer extends Component {
 	state = {
 		schedules: [],
 	};
 
+	componentDidMount() {
+		const schedules = [...this.state.schedules];
+		firestore
+			.collection('schedules')
+			.get()
+			.then(docs => {
+				docs.forEach(doc => {
+					schedules.push({
+						id: doc.id,
+						day: doc.data().day,
+						missaNarrator: doc.data().missaNarrator,
+						oneAltarServer: doc.data().oneAltarServer,
+						twoAltarServer: doc.data().twoAltarServer,
+						oneLector: doc.data().oneLector,
+						twoLector: doc.data().twoLector,
+					});
+					schedules.reverse();
+					this.setState({ schedules });
+				});
+			});
+	}
+
 	home = React.createRef();
 
 	onCreate = async () => {
-		const { schedules } = this.state;
-		const schedule = {
-			id: uuid(),
-			day: '',
-			missaNarrator: '',
-			oneAltarServer: '',
-			twoAltarServer: '',
-			oneLector: '',
-			twoLector: '',
-		};
-		await this.setState({
-			schedules: schedules.concat(schedule),
-		});
+		await firestore
+			.collection('schedules')
+			.add({
+				day: '',
+				missaNarrator: '',
+				oneAltarServer: '',
+				twoAltarServer: '',
+				oneLector: '',
+				twoLector: '',
+			})
+			.then(res => {
+				const schedules = [
+					...this.state.schedules,
+					{
+						id: res.id,
+						day: '',
+						missaNarrator: '',
+						oneAltarServer: '',
+						twoAltarServer: '',
+						oneLector: '',
+						twoLector: '',
+					},
+				];
+				this.setState({ schedules });
+			});
 		this.home.current.scrollTop = this.home.current.scrollHeight;
 	};
 
 	onDelete = async () => {
 		const { schedules } = this.state;
-		schedules.pop();
-		await this.setState({
-			schedules: schedules,
-		});
-		this.home.current.scrollTop = this.home.current.scrollHeight;
-	};
-
-	onClear = () => {
-		const { schedules } = this.state;
-		schedules.pop();
-		this.setState({
-			schedules: [],
-		});
+		if (schedules.length !== 0) {
+			await firestore
+				.collection('schedules')
+				.doc(schedules[schedules.length - 1].id)
+				.delete()
+				.then(() => {
+					schedules.pop();
+					this.setState({ schedules });
+				});
+			this.home.current.scrollTop = this.home.current.scrollHeight;
+		}
 	};
 
 	onUpdate = (id, data) => {
 		const { schedules } = this.state;
+		firestore
+			.collection('schedules')
+			.doc(id)
+			.update(data);
 		this.setState({
 			schedules: schedules.map(schedule =>
 				schedule.id === id
@@ -55,6 +91,22 @@ class HomeContainer extends Component {
 					: schedule
 			),
 		});
+	};
+
+	onClear = async () => {
+		const { schedules } = this.state;
+		function allDelete() {
+			if (schedules.length !== 0) {
+				for (let i = 0; i <= schedules.length - 1; i++) {
+					firestore
+						.collection('schedules')
+						.doc(schedules[i].id)
+						.delete();
+				}
+			}
+		}
+		await allDelete();
+		this.setState({ schedules: [] });
 	};
 
 	render() {

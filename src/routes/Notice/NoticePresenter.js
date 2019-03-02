@@ -19,9 +19,9 @@ const Textarea = styled.textarea`
 	font-size:1rem;
 `;
 
-const Notice = ({ notice, handleChange }) => (
+const Notice = ({ text, handleChange }) => (
 	<Container>
-		<Textarea value={notice} onChange={handleChange} placeholder="공지사항..."/>
+		<Textarea value={text} onChange={handleChange} placeholder="공지사항..." />
 	</Container>
 );
 

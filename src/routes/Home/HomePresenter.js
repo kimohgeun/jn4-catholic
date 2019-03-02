@@ -7,7 +7,7 @@ import Schedule from '../../components/Schedule';
 const Container = styled.div`
 	width: 100%;
 	height: calc(100vh - 50px);
-	overflow:auto;
+	overflow: auto;
 	padding: 0 2%;
 `;
 
@@ -19,6 +19,7 @@ const TitleContainer = styled.div`
 `;
 
 const Title = styled.span`
+	width: 100%;
 	font-size: 10px;
 	display: flex;
 	flex-direction: column;

@@ -34,7 +34,7 @@ const Header = withRouter(({ location: { pathname } }) => (
 		</Link>
 		<Title>{pathname === '/' ? '배당표' : '공지사항'}</Title>
 		<Link to="/notice">
-			<Icon className="fas fa-bell" />
+			<Icon className="fas fa-bell" pathname={pathname === '/notice'} />
 		</Link>
 	</Container>
 ));

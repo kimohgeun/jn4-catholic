@@ -1,20 +1,40 @@
 import React, { Component } from 'react';
 import NoticePresenter from './NoticePresenter';
+import { firestore } from '../../firebase';
 
 class NoticeContainer extends Component {
 	state = {
-		notice: '',
+		id: '',
+		text: '',
 	};
 
+	componentDidMount() {
+		firestore
+			.collection('notice')
+			.get()
+			.then(docs => {
+				docs.forEach(doc => {
+					const id = doc.id;
+					this.setState({ id });
+					this.setState(doc.data());
+				});
+			});
+	}
+
 	handleChange = e => {
+		const { id } = this.state;
+		firestore
+			.collection('notice')
+			.doc(id)
+			.update({ text: e.target.value });
 		this.setState({
-			notice: e.target.value,
+			text: e.target.value,
 		});
 	};
 
 	render() {
-		const { notice } = this.state;
-		return <NoticePresenter notice={notice} handleChange={this.handleChange} />;
+		const { text } = this.state;
+		return <NoticePresenter text={text} handleChange={this.handleChange} />;
 	}
 }
 

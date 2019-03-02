@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Form = styled.form`
+	width:100%;
 	display: flex;
 	align-items: center;
 	background: #fff;
@@ -11,13 +12,14 @@ const Form = styled.form`
 	color: #424242;
 	border: 1px solid #e0e0e0;
 	margin-top: 20px;
+	z-index: 5;
 `;
 
 const Input = styled.input`
-    all:unset;
-    width:100%;
-    padding: 0.5em;
-    font-size: 0.9rem;
+	all: unset;
+	width: 100%;
+	padding: 0.5em;
+	font-size: 0.9rem;
 `;
 
 const Icon = styled.i`

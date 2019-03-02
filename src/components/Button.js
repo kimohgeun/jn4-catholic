@@ -86,20 +86,18 @@ class Button extends Component {
 	render() {
 		const { toggle } = this.state;
 		return (
-			<>
-				<div>
-					<Clear toggle={toggle} onClick={this.props.onClear}>
-						클리어
-					</Clear>
-					<Add toggle={toggle} onClick={this.props.onCreate}>
-						행 추가
-					</Add>
-					<Delete toggle={toggle} onClick={this.props.onDelete}>
-						행 삭제
-					</Delete>
-				</div>
+			<div>
+				<Clear toggle={toggle} onClick={this.props.onClear}>
+					클리어
+				</Clear>
+				<Add toggle={toggle} onClick={this.props.onCreate}>
+					행 추가
+				</Add>
+				<Delete toggle={toggle} onClick={this.props.onDelete}>
+					행 삭제
+				</Delete>
 				<Icon toggle={toggle} className="fas fa-plus-circle" onClick={this.handleClick} />
-			</>
+			</div>
 		);
 	}
 }
