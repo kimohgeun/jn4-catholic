@@ -31,9 +31,9 @@ const Icon = styled.i`
 	font-size: 1.3rem;
 `;
 
-const Home = ({ schedules, onCreate, home, onDelete, onClear, onUpdate }) => (
+const Home = ({ schedules, onCreate, home, onDelete, onSearch, onClear, onUpdate, term }) => (
 	<Container ref={home}>
-		<Search />
+		<Search term={term} onSearch={onSearch} />
 		<TitleContainer>
 			<Title>
 				<Icon className="fas fa-calendar-alt" />

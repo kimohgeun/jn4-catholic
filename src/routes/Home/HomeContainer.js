@@ -5,6 +5,7 @@ import { firestore } from '../../firebase';
 class HomeContainer extends Component {
 	state = {
 		schedules: [],
+		term: '',
 	};
 
 	componentDidMount() {
@@ -109,11 +110,20 @@ class HomeContainer extends Component {
 		this.setState({ schedules: [] });
 	};
 
+	onSearch = e => {
+		this.setState({
+			term: e.target.value,
+		});
+	};
+
 	render() {
-		const { schedules } = this.state;
+		const { schedules, term } = this.state;
+		const searchSchedule = schedules.filter(schedule => schedule.day.indexOf(term) !== -1);
 		return (
 			<HomePresenter
-				schedules={schedules}
+				schedules={searchSchedule}
+				term={term}
+				onSearch={this.onSearch}
 				onCreate={this.onCreate}
 				onDelete={this.onDelete}
 				onUpdate={this.onUpdate}
