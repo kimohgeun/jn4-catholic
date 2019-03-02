@@ -1,11 +1,11 @@
 {
-  "main.js": "/static/js/main.ff7f3adb.chunk.js",
-  "main.js.map": "/static/js/main.ff7f3adb.chunk.js.map",
-  "runtime~main.js": "/static/js/runtime~main.fdfcfda2.js",
-  "runtime~main.js.map": "/static/js/runtime~main.fdfcfda2.js.map",
-  "static/js/2.7433ce8c.chunk.js": "/static/js/2.7433ce8c.chunk.js",
-  "static/js/2.7433ce8c.chunk.js.map": "/static/js/2.7433ce8c.chunk.js.map",
-  "index.html": "/index.html",
-  "precache-manifest.1e00d4939ac5068d147c49cd261287e2.js": "/precache-manifest.1e00d4939ac5068d147c49cd261287e2.js",
-  "service-worker.js": "/service-worker.js"
+  "main.js": "/jn4-catholic/static/js/main.ff7f3adb.chunk.js",
+  "main.js.map": "/jn4-catholic/static/js/main.ff7f3adb.chunk.js.map",
+  "runtime~main.js": "/jn4-catholic/static/js/runtime~main.bc6e6ca2.js",
+  "runtime~main.js.map": "/jn4-catholic/static/js/runtime~main.bc6e6ca2.js.map",
+  "static/js/2.cf9492f4.chunk.js": "/jn4-catholic/static/js/2.cf9492f4.chunk.js",
+  "static/js/2.cf9492f4.chunk.js.map": "/jn4-catholic/static/js/2.cf9492f4.chunk.js.map",
+  "index.html": "/jn4-catholic/index.html",
+  "precache-manifest.39e69ceea340fe323a33999666bfd420.js": "/jn4-catholic/precache-manifest.39e69ceea340fe323a33999666bfd420.js",
+  "service-worker.js": "/jn4-catholic/service-worker.js"
 }
