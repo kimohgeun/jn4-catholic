@@ -24,7 +24,7 @@ class HomeContainer extends Component {
 						oneLector: doc.data().oneLector,
 						twoLector: doc.data().twoLector,
 					});
-					schedules.sort(function (a, b) {
+					schedules.sort(function(a, b) {
 						return a.day < b.day ? -1 : a.day > b.day ? 1 : 0;
 					});
 					this.setState({ schedules });
@@ -65,14 +65,14 @@ class HomeContainer extends Component {
 
 	onDelete = async () => {
 		const { schedules } = this.state;
+		const id = schedules[0].id;
 		if (schedules.length !== 0) {
 			await firestore
 				.collection('schedules')
-				.doc(schedules[schedules.length - 1].id)
+				.doc(id)
 				.delete()
 				.then(() => {
-					schedules.pop();
-					this.setState({ schedules });
+					this.setState({ schedules: schedules.filter(schedule => schedule.id !== id) });
 				});
 			this.home.current.scrollTop = this.home.current.scrollHeight;
 		}
