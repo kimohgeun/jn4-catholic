@@ -24,7 +24,9 @@ class HomeContainer extends Component {
 						oneLector: doc.data().oneLector,
 						twoLector: doc.data().twoLector,
 					});
-					schedules.reverse();
+					schedules.sort(function (a, b) {
+						return a.day < b.day ? -1 : a.day > b.day ? 1 : 0;
+					});
 					this.setState({ schedules });
 				});
 			});
